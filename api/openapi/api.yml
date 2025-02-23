@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: Raft Node API
+  version: 1.0.0
+  description: API for interacting with Raft node
+
+servers:
+  - url: /api
+    description: Base API path
+
+paths:
+  /internal/nodes/current:
+    get:
+      summary: Get current node NodeInformation
+      description: Returns NodeInformation about the current node including its address and state
+      operationId: getCurrentNode
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  node:
+                    $ref: '#/components/schemas/NodeInfo'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    NodeInfo:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/NodeAddress'
+        state:
+          type: integer
+          format: int8
+          enum: [0, 1, 2, 3]
+          description: Current node state in the Raft cluster
+        term:
+          type: integer
+          format: int64
+          description: Current term number
+    NodeAddress:
+      type: object
+      properties:
+        internal:
+          $ref: '#/components/schemas/NodeIfaceAddress'
+
+    NodeIfaceAddress:
+      type: object
+      properties:
+        uri:
+          type: string
+          format: uri
+          description: Node's internal URI
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message

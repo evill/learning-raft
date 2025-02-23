@@ -11,22 +11,22 @@
 
 ### 📖 Read before coding:
 
-* [Raft paper](./raft.pdf) (Sections 2 & 3) – In Search of an Understandable Consensus Algorithm
+* [Raft paper](raft.pdf) (Sections 2 & 3) – In Search of an Understandable Consensus Algorithm
 * Raft Overview – [The Secret Lives of Data](https://thesecretlivesofdata.com/raft/) (interactive visualization)
 * Raft: Understandable Distributed Consensus – [Raft GitHub Overview](https://raft.github.io/)
 
 ### Steps:
 
-1. Create a Node struct
+1. Create a project structure
+2. Create a Node struct
 
 Struct data:
 * A unique identifier (e.g., ID string)
 * A list of peer nodes
 * A state (Follower, Candidate, Leader)
-* A term number
-* A channel for incoming messages 
+* A term number 
 
-2. Define an enum for the Raft states
+3. Define an enum for the Raft states
 
 ```go
 type State int
@@ -38,9 +38,9 @@ const (
 )
 ```
 
-3. Implement a function to initialize a node with a given ID and list of peers.
-
-4. Add logging to track state changes.
+4. Implement a function to initialize a node with a given ID and list of peers.
+5. Add logging to track state changes.
+6. Provide HTTP channel for incoming messages
 
 ## Stage 2: Implement Leader Election
 
@@ -49,7 +49,7 @@ const (
 * Implement voting, and heartbeats.
 
 ### 📖 Read before coding:
-* Leader Election (Section 5.2) – [Raft paper](./raft.pdf)
+* Leader Election (Section 5.2) – [Raft paper](raft.pdf)
 * Leader Election Explained – [wikipedia](https://en.wikipedia.org/wiki/Raft_(algorithm)#Leader_election)
 * Raft Illustrated: Leader Election – [Lecture Notes](https://www.cs.princeton.edu/courses/archive/fall16/cos418/a3.html)
 * [Implementing Raft: Part 1 - Elections](https://eli.thegreenplace.net/2020/implementing-raft-part-1-elections/)
@@ -77,7 +77,7 @@ const (
 
 ### 📖 Read before coding:
 
-* Log Replication (Section 5.3) – [Raft paper](./raft.pdf)
+* Log Replication (Section 5.3) – [Raft paper](raft.pdf)
 * [Log Replication Explained](https://eli.thegreenplace.net/2020/implementing-raft-part-2-commands-and-log-replication/) – Raft Guide by Eli Bendersky
 * Log Replication Visualization – Raft Interactive
 
@@ -108,7 +108,7 @@ Log []LogEntry
 * Ensure log consistency and allow node restarts, and recovery from crashes.
 ### 📖 Read before coding:
 
-* Log Consistency (Section 5.4, 5.5) – [Raft paper](./raft.pdf)
+* Log Consistency (Section 5.4, 5.5) – [Raft paper](raft.pdf)
 * Handling Crashes & Recovery – Raft Thesis by Diego Ongaro
 * Log Truncation & Conflict Resolution – [Log Replication Deep Dive](https://rohitgoel11.medium.com/deep-dive-to-data-replication-b0a6bd8a3171) 
 
@@ -127,7 +127,7 @@ Log []LogEntry
 * Expose Raft as a distributed key-value store.
 
 ### 📖 Read before coding:
-* State Machine Application (Section 6) – [Raft paper](./raft.pdf)
+* State Machine Application (Section 6) – [Raft paper](raft.pdf)
 * Building a Key-Value Store with Raft – [RaftKV](https://github.com/xiaoyang-sde/raft-kv?tab=readme-ov-file) (MIT 6.824)
 * How Raft Applies to Key-Value Databases – CockroachDB’s Explanation
 * [Implementing Raft: Part 4 - Key/Value Database](https://eli.thegreenplace.net/2024/implementing-raft-part-4-keyvalue-database/)
@@ -145,7 +145,7 @@ Log []LogEntry
 * Test failover, and ensure high availability
 
 ### 📖 Read before coding:
-* Fault Tolerance & Dynamic Membership (Section 6.2) – [Raft paper](./raft.pdf)
+* Fault Tolerance & Dynamic Membership (Section 6.2) – [Raft paper](raft.pdf)
 * Deploying Raft on Kubernetes/Docker – Etcd Raft Deployment
 * Testing Raft Failover Scenarios – Jepsen Tests on Raft
 
@@ -162,7 +162,7 @@ Log []LogEntry
 * Implement Snapshotting to prevent logs from growing too large. 
 
 ### 📖 Read before coding:
-* Raft Snapshots (Section 7) – [Raft paper](./raft.pdf)
+* Raft Snapshots (Section 7) – [Raft paper](raft.pdf)
 
 ## Persistence and Optimizations
 ### 🔹 Goals

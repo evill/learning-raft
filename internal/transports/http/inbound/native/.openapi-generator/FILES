@@ -1,0 +1,17 @@
+.openapi-generator-ignore
+README.md
+api.go
+api/openapi.yaml
+api_default.go
+api_default_service.go
+error.go
+helpers.go
+impl.go
+logger.go
+model_error.go
+model_get_current_node_200_response.go
+model_get_current_node_500_response.go
+model_node_address.go
+model_node_iface_address.go
+model_node_info.go
+routers.go
